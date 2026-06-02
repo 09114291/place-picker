@@ -2,11 +2,64 @@
   margin-top: 24px;
 }
 
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .history-title {
   font-size: 20px;
   font-weight: 600;
   color: var(--text-light);
-  margin-bottom: 16px;
+  margin: 0;
+}
+
+.history-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-btn {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.filter-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-btn svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-light);
+}
+
+.repeat-selection-btn {
+  background-color: var(--accent-orange);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.repeat-selection-btn:hover {
+  background-color: #ff8533;
 }
 
 .history-cards {
