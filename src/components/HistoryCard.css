@@ -1,0 +1,119 @@
+.history-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.2s;
+}
+
+.history-card:hover {
+  border-color: rgba(255, 107, 0, 0.3);
+}
+
+.card-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.badge-type {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+.badge-cuisine {
+  background-color: rgba(255, 107, 0, 0.15);
+  color: var(--accent-orange);
+}
+
+.badge-recommended {
+  background-color: rgba(255, 107, 0, 0.2);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-date {
+  font-size: 13px;
+  color: var(--text-light);
+  opacity: 0.6;
+}
+
+.card-streak {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.streak-icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.streak-number-small {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-orange);
+}
+
+.repeat-button {
+  background-color: rgba(255, 107, 0, 0.1);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.repeat-button:hover {
+  background-color: rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.5);
+}

@@ -1,0 +1,15 @@
+.history-list {
+  margin-top: 24px;
+}
+
+.history-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.history-cards {
+  display: flex;
+  flex-direction: column;
+}
