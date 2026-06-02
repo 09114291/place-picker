@@ -1,0 +1,84 @@
+.streak-banner {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.streak-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.streak-number {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--accent-orange);
+  text-shadow: 0 0 30px rgba(255, 107, 0, 0.6),
+               0 0 60px rgba(255, 107, 0, 0.4),
+               0 0 90px rgba(255, 107, 0, 0.2);
+  line-height: 1;
+}
+
+.fire-icon {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 0, 0.8));
+  animation: flicker 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.streak-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-label {
+  font-size: 14px;
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-orange), #ff8c00);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-orange);
+  min-width: 40px;
+  text-align: right;
+}

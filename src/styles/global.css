@@ -1,0 +1,19 @@
+:root {
+  --bg-main: #0B0C10;
+  --accent-orange: #FF6B00;
+  --text-light: #F8FAFC;
+  --card-bg: #161B22;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif; /* Якщо ще не підключив шрифт, працюватиме стандартний sans-serif */
+  line-height: 1.6;
+}
