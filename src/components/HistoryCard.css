@@ -91,6 +91,11 @@
 .streak-icon-small {
   width: 16px;
   height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.fire-icon-clicked {
+  transform: scale(1.3);
 }
 
 .streak-number-small {

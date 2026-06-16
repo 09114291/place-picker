@@ -1,16 +1,94 @@
-# React + Vite
+# Place Picker 🍽️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Place Picker — це розумний помічник для вибору закладів громадського харчування в Івано-Франківську. Додаток допомагає користувачам відстежувати свої вибори, підтримувати streak (серію послідовних днів з вибором закладу) та відкривати нові місця.
 
-Currently, two official plugins are available:
+## 🎯 Функціонал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Streak система**: Відстеження серії послідовних днів з вибором закладу з календарем та нагородами
+- **Каталог закладів**: Перегляд ресторанів, кафе та барів з фільтрацією за категорією, кухнею та рейтингом
+- **Карта міста**: Інтерактивна карта з маркерами закладів (Leaflet)
+- **Історія виборів**: Перегляд минулих виборів з можливістю повторити
+- **Налаштування**: Профіль користувача, гастрономічні вподобання та сповіщення
+- **Мікроанімації**: Плавні переходи та інтерактивні елементи для преміального досвіду
 
-## React Compiler
+## 🛠️ Стек технологій
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18** — UI бібліотека
+- **Vite** — швидкий білд-інструмент
+- **React Router** — роутинг
+- **Leaflet** — інтерактивні карти
+- **CSS** — стилізація з CSS змінними
 
-## Expanding the ESLint configuration
+## 📸 Скріншоти
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Головна сторінка
+![Home Page](screenshots/home.png)
+
+### Сторінка Streak
+![Streak Page](screenshots/streak.png)
+
+### Каталог закладів
+![Places Page](screenshots/places.png)
+
+### Карта міста
+![Map Page](screenshots/map.png)
+
+### Налаштування
+![Settings Page](screenshots/settings.png)
+
+## 🚀 Встановлення та запуск
+
+```bash
+# Клонування репозиторію
+git clone https://github.com/09114291/place-picker.git
+cd place-picker
+
+# Встановлення залежностей
+npm install
+
+# Запуск dev сервера
+npm run dev
+
+# Білд для продакшену
+npm run build
+```
+
+## 📝 Особливості
+
+- **Темна тема**: Сучасний темний дизайн з акцентами помаранчевого кольору
+- **Адаптивність**: Повна підтримка мобільних пристроїв
+- **Мікроанімації**: Плавні переходи (0.3s ease) на всіх інтерактивних елементах
+- **Glow ефекти**: Підсвічування вогника (fire icon) для візуального акценту
+- **Анімовані progress-бари**: Плавне заповнення індикаторів прогресу
+
+## 🎨 Компоненти
+
+- `PlaceCard` — картка закладу
+- `HistoryCard` — картка історії виборів
+- `StreakCalendar` — календар streak
+- `StreakBanner` — банер з поточним streak
+- `RewardsBox` — бокс з нагородами
+- `Modal` — модальне вікно
+
+## 📂 Структура проекту
+
+```
+src/
+├── components/     # Реюзабельні компоненти
+├── pages/          # Сторінки додатку
+├── data/           # Дані (заклади, історія)
+├── styles/         # Глобальні стилі
+└── assets/         # Статичні ресурси
+```
+
+## 🌟 Майбутні покращення
+
+- Інтеграція з реальними API для отримання даних про заклади
+- Система реальних відгуків та рейтингів
+- Соціальні функції (поділитися вибором з друзями)
+- Push-сповіщення для підтримки streak
+- Персоналізовані рекомендації на основі історії
+
+## 📄 Ліцензія
+
+MIT License

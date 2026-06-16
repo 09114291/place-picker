@@ -3,26 +3,32 @@ import './StreakCalendar.css';
 
 function StreakCalendar() {
   const [currentDate] = useState(new Date());
-  
+  const [clickedFireIndex, setClickedFireIndex] = useState(null);
+
   const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд'];
-  
+
+  const handleFireClick = (index) => {
+    setClickedFireIndex(index);
+    setTimeout(() => setClickedFireIndex(null), 300);
+  };
+
   // Generate calendar days for current month
   const generateCalendarDays = () => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
-    
+
     const startDay = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
     const totalDays = lastDay.getDate();
-    
+
     const days = [];
-    
+
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < startDay; i++) {
       days.push({ day: null, isActive: false });
     }
-    
+
     // Add days of the month with mock streak data
     for (let i = 1; i <= totalDays; i++) {
       // Mock data: days 1-14 are active, 15-31 are inactive
@@ -30,7 +36,7 @@ function StreakCalendar() {
       const isCurrentDay = i === currentDate.getDate();
       days.push({ day: i, isActive, isCurrentDay });
     }
-    
+
     return days;
   };
 
@@ -56,7 +62,13 @@ function StreakCalendar() {
               <>
                 {item.isActive ? (
                   <div className="active-day">
-                    <svg className="fire-icon-small" viewBox="0 0 24 24" fill="currentColor">
+                    <svg
+                      className={`fire-icon-small ${clickedFireIndex === index ? 'fire-icon-clicked' : ''}`}
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      onClick={() => handleFireClick(index)}
+                      style={{ cursor: 'pointer' }}
+                    >
                       <path d="M12 23C17.5228 23 22 18.5228 22 13C22 7.47715 17.5228 3 12 3C6.47715 3 2 7.47715 2 13C2 18.5228 6.47715 23 12 23Z" fill="#FF6B00" fillOpacity="0.2"/>
                       <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" fill="#FF6B00" fillOpacity="0.4"/>
                       <path d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z" fill="#FF6B00"/>
