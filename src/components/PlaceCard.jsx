@@ -1,6 +1,6 @@
 import './PlaceCard.css';
 
-function PlaceCard({ place }) {
+function PlaceCard({ place, onDetailsClick }) {
   return (
     <div className="place-card">
       <div className="place-image-container">
@@ -28,7 +28,9 @@ function PlaceCard({ place }) {
           <span className="place-distance">{place.distance}</span>
         </div>
         
-        <button className="place-details-button">Детальніше</button>
+        <button className="place-details-button" onClick={() => onDetailsClick && onDetailsClick(place)}>
+          Детальніше
+        </button>
       </div>
     </div>
   );

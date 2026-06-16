@@ -1,6 +1,6 @@
 import './HistoryCard.css';
 
-function HistoryCard({ item }) {
+function HistoryCard({ item, onRepeatClick }) {
   return (
     <div className="history-card">
       <img src={item.imgUrl} alt={item.title} className="card-image" />
@@ -30,7 +30,9 @@ function HistoryCard({ item }) {
         </div>
       </div>
       
-      <button className="repeat-button">Повторити</button>
+      <button className="repeat-button" onClick={() => onRepeatClick && onRepeatClick(item)}>
+        Повторити
+      </button>
     </div>
   );
 }

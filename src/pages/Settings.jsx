@@ -47,7 +47,6 @@ function Settings() {
   };
 
   const handleSave = () => {
-    console.log('Saving settings:', { profile, preferences, notifications });
     alert('Налаштування збережено!');
   };
 

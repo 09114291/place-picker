@@ -6,7 +6,7 @@
   display: flex;
   gap: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: border-color 0.2s;
+  transition: all 0.3s ease;
 }
 
 .history-card:hover {
@@ -108,7 +108,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   flex-shrink: 0;
   align-self: center;
 }

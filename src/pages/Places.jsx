@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { placesData } from '../data/places';
 import PlaceCard from '../components/PlaceCard';
+import Modal from '../components/Modal';
 import './Places.css';
 
 function Places() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedCuisine, setSelectedCuisine] = useState('All');
   const [selectedRating, setSelectedRating] = useState('All');
+  const [selectedPlace, setSelectedPlace] = useState(null);
   
   const categories = ['All', 'restaurant', 'cafe', 'cafeteria', 'fast_food', 'grocery'];
   const cuisines = ['All', 'Ukrainian', 'Italian', 'Japanese', 'Vegetarian', 'Seafood', 'International'];
@@ -22,6 +24,14 @@ function Places() {
     
     return categoryMatch && cuisineMatch && ratingMatch;
   });
+
+  const handleDetailsClick = (place) => {
+    setSelectedPlace(place);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPlace(null);
+  };
 
   return (
     <div className="page">
@@ -79,10 +89,32 @@ function Places() {
         
         <div className="places-grid">
           {filteredPlaces.map(place => (
-            <PlaceCard key={place.id} place={place} />
+            <PlaceCard key={place.id} place={place} onDetailsClick={handleDetailsClick} />
           ))}
         </div>
       </div>
+
+      <Modal
+        isOpen={selectedPlace !== null}
+        onClose={handleCloseModal}
+        title={selectedPlace?.name}
+      >
+        {selectedPlace && (
+          <div className="place-details-modal">
+            <img src={selectedPlace.imgUrl} alt={selectedPlace.name} className="modal-place-image" />
+            <div className="modal-place-info">
+              <p className="modal-place-cuisine">{selectedPlace.cuisine} кухня</p>
+              <p className="modal-place-address">{selectedPlace.address}</p>
+              <div className="modal-place-meta">
+                <span className="modal-place-rating">⭐ {selectedPlace.rating}</span>
+                <span className="modal-place-price">{selectedPlace.priceRange}</span>
+                <span className="modal-place-distance">{selectedPlace.distance}</span>
+              </div>
+              <button className="modal-place-button">Обрати це місце</button>
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }

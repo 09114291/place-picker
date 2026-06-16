@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   padding: 0;
 }
 
@@ -55,7 +55,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
 .repeat-selection-btn:hover {
@@ -65,4 +65,61 @@
 .history-cards {
   display: flex;
   flex-direction: column;
+}
+
+.repeat-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-history-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.modal-history-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-history-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.modal-history-date {
+  font-size: 14px;
+  color: var(--text-light);
+  opacity: 0.6;
+  margin: 0;
+}
+
+.modal-history-streak {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.modal-history-button {
+  background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8533 100%);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.modal-history-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
 }

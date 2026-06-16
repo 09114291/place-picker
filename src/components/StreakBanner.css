@@ -48,7 +48,7 @@
 .fire-icon {
   width: 48px;
   height: 48px;
-  filter: drop-shadow(0 0 20px rgba(255, 107, 0, 0.8));
+  filter: drop-shadow(0 0 10px #FF6B00);
   animation: flicker 1.5s ease-in-out infinite alternate;
 }
 
@@ -134,7 +134,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   align-self: flex-start;
 }
 
