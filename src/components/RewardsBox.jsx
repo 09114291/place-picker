@@ -1,38 +1,47 @@
 import './RewardsBox.css';
 
-function RewardsBox() {
+function RewardsBox({ streak }) {
   const rewards = [
     { 
       id: 1, 
       title: 'Новачок', 
       description: 'Зроби перший вибір', 
-      status: 'completed',
+      required: 1,
       icon: 'star'
     },
     { 
       id: 2, 
       title: 'Постійний вибір', 
       description: '7 днів поспіль', 
-      status: 'completed',
+      required: 7,
       icon: 'fire'
     },
     { 
       id: 3, 
       title: 'Вогняний вибір', 
       description: '14 днів поспіль', 
-      status: 'in-progress',
-      progress: 14,
-      total: 21,
+      required: 14,
       icon: 'fire-double'
     },
     { 
       id: 4, 
       title: 'Легенда', 
       description: '21 день поспіль', 
-      status: 'locked',
+      required: 21,
       icon: 'crown'
     }
   ];
+
+  const getRewardStatus = (required) => {
+    if (streak >= required) return 'completed';
+    if (streak >= required - 7) return 'in-progress';
+    return 'locked';
+  };
+
+  const getProgress = (required) => {
+    const currentProgress = Math.min(streak, required);
+    return currentProgress;
+  };
 
   const getIcon = (iconName) => {
     switch (iconName) {
@@ -45,17 +54,17 @@ function RewardsBox() {
       case 'fire':
         return (
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 23C17.5228 23 22 18.5228 22 13C22 7.47715 17.5228 3 12 3C6.47715 3 2 7.47715 2 13C2 18.5228 6.47715 23 12 23Z" fillOpacity="0.2"/>
-            <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" fillOpacity="0.4"/>
-            <path d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z"/>
+            <path d="M12 22c4.97 0 9-4.03 9-9 0-4.97-9-13-9-13S3 8.03 3 13c0 4.97 4.03 9 9 9z" fill="#FF4500"/>
+            <path d="M12 19c3.31 0 6-2.69 6-6 0-3.31-6-9-6-9S6 9.69 6 13c0 3.31 2.69 6 6 6z" fill="#FF6B00"/>
+            <path d="M12 16c1.66 0 3-1.34 3-3 0-1.66-3-5-3-5s-3 3.34-3 5c0 1.66 1.34 3 3 3z" fill="#FF8C00"/>
           </svg>
         );
       case 'fire-double':
         return (
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 23C17.5228 23 22 18.5228 22 13C22 7.47715 17.5228 3 12 3C6.47715 3 2 7.47715 2 13C2 18.5228 6.47715 23 12 23Z" fillOpacity="0.2"/>
-            <path d="M12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6C8.13401 6 5 9.13401 5 13C5 16.866 8.13401 20 12 20Z" fillOpacity="0.4"/>
-            <path d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z"/>
+            <path d="M12 22c4.97 0 9-4.03 9-9 0-4.97-9-13-9-13S3 8.03 3 13c0 4.97 4.03 9 9 9z" fill="#FF4500"/>
+            <path d="M12 19c3.31 0 6-2.69 6-6 0-3.31-6-9-6-9S6 9.69 6 13c0 3.31 2.69 6 6 6z" fill="#FF6B00"/>
+            <path d="M12 16c1.66 0 3-1.34 3-3 0-1.66-3-5-3-5s-3 3.34-3 5c0 1.66 1.34 3 3 3z" fill="#FF8C00"/>
           </svg>
         );
       case 'crown':
@@ -73,45 +82,49 @@ function RewardsBox() {
     <div className="rewards-box">
       <h3 className="rewards-box-title">Твої нагороди</h3>
       <div className="rewards-box-list">
-        {rewards.map(reward => (
-          <div key={reward.id} className={`reward-card ${reward.status}`}>
-            <div className="reward-card-icon">
-              {getIcon(reward.icon)}
-            </div>
-            <div className="reward-card-content">
-              <div className="reward-card-header">
-                <span className="reward-card-title">{reward.title}</span>
-                {reward.status === 'completed' && (
-                  <div className="reward-check">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <path d="M20 6L9 17L4 12"/>
-                    </svg>
-                  </div>
-                )}
-                {reward.status === 'locked' && (
-                  <div className="reward-lock">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0110 0v4"/>
-                    </svg>
+        {rewards.map(reward => {
+          const status = getRewardStatus(reward.required);
+          const progress = getProgress(reward.required);
+          return (
+            <div key={reward.id} className={`reward-card ${status}`}>
+              <div className="reward-card-icon">
+                {getIcon(reward.icon)}
+              </div>
+              <div className="reward-card-content">
+                <div className="reward-card-header">
+                  <span className="reward-card-title">{reward.title}</span>
+                  {status === 'completed' && (
+                    <div className="reward-check">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                        <path d="M20 6L9 17L4 12"/>
+                      </svg>
+                    </div>
+                  )}
+                  {status === 'locked' && (
+                    <div className="reward-lock">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                <p className="reward-card-description">{reward.description}</p>
+                {status === 'in-progress' && (
+                  <div className="reward-progress">
+                    <div className="reward-progress-bar">
+                      <div 
+                        className="reward-progress-fill" 
+                        style={{ width: `${(progress / reward.required) * 100}%` }}
+                      ></div>
+                    </div>
+                    <span className="reward-progress-text">{progress}/{reward.required}</span>
                   </div>
                 )}
               </div>
-              <p className="reward-card-description">{reward.description}</p>
-              {reward.status === 'in-progress' && (
-                <div className="reward-progress">
-                  <div className="reward-progress-bar">
-                    <div 
-                      className="reward-progress-fill" 
-                      style={{ width: `${(reward.progress / reward.total) * 100}%` }}
-                    ></div>
-                  </div>
-                  <span className="reward-progress-text">{reward.progress}/{reward.total}</span>
-                </div>
-              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

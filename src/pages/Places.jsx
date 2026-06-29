@@ -4,14 +4,14 @@ import PlaceCard from '../components/PlaceCard';
 import Modal from '../components/Modal';
 import './Places.css';
 
-function Places() {
+function Places({ incrementStreak }) {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedCuisine, setSelectedCuisine] = useState('All');
   const [selectedRating, setSelectedRating] = useState('All');
   const [selectedPlace, setSelectedPlace] = useState(null);
   
-  const categories = ['All', 'restaurant', 'cafe', 'cafeteria', 'fast_food', 'grocery'];
-  const cuisines = ['All', 'Ukrainian', 'Italian', 'Japanese', 'Vegetarian', 'Seafood', 'International'];
+  const categories = ['All', 'restaurant', 'cafe'];
+  const cuisines = ['All', 'Українська', 'Італійська', 'Європейська', 'Стейки', 'Кафе', 'Американська', 'Піца', 'Японська', 'Кав\'ярня', 'Вегетаріанська', 'Веганська', 'Здорове харчування', 'Бургери', 'Гриль', 'Ресторан', 'Фастфуд', 'Турецька', 'Морепродукти', 'Паб'];
   const ratings = ['All', '4.5+', '4.0+', '3.5+'];
   
   const filteredPlaces = placesData.filter(place => {
@@ -31,6 +31,11 @@ function Places() {
 
   const handleCloseModal = () => {
     setSelectedPlace(null);
+  };
+
+  const handleSelectPlace = () => {
+    incrementStreak();
+    handleCloseModal();
   };
 
   return (
@@ -103,6 +108,7 @@ function Places() {
           <div className="place-details-modal">
             <img src={selectedPlace.imgUrl} alt={selectedPlace.name} className="modal-place-image" />
             <div className="modal-place-info">
+              <p className="modal-place-description">{selectedPlace.description}</p>
               <p className="modal-place-cuisine">{selectedPlace.cuisine} кухня</p>
               <p className="modal-place-address">{selectedPlace.address}</p>
               <div className="modal-place-meta">
@@ -110,7 +116,20 @@ function Places() {
                 <span className="modal-place-price">{selectedPlace.priceRange}</span>
                 <span className="modal-place-distance">{selectedPlace.distance}</span>
               </div>
-              <button className="modal-place-button">Обрати це місце</button>
+              {selectedPlace.menu && (
+                <div className="modal-place-menu">
+                  <h4 className="menu-title">Меню:</h4>
+                  <ul className="menu-list">
+                    {selectedPlace.menu.map((item, index) => (
+                      <li key={index} className="menu-item">
+                        <span className="menu-item-name">{item.name}</span>
+                        <span className="menu-item-price">{item.price} грн</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <button className="modal-place-button" onClick={handleSelectPlace}>Обрати це місце</button>
             </div>
           </div>
         )}

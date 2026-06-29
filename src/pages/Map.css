@@ -118,6 +118,14 @@
   gap: 12px;
 }
 
+.modal-place-description {
+  font-size: 15px;
+  color: var(--text-light);
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
 .modal-place-cuisine {
   font-size: 16px;
   color: var(--text-light);
@@ -149,6 +157,52 @@
 
 .modal-place-distance {
   margin-left: auto;
+}
+
+.modal-place-menu {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0 0 12px 0;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-name {
+  font-size: 14px;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.menu-item-price {
+  font-size: 14px;
+  color: var(--accent-orange);
+  font-weight: 600;
 }
 
 .modal-place-button {

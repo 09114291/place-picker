@@ -94,14 +94,31 @@
   transition: transform 0.3s ease;
 }
 
-.fire-icon-clicked {
-  transform: scale(1.3);
+.streak-icon-small.animate {
+  animation: firePulse 0.5s ease;
+}
+
+@keyframes firePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .streak-number-small {
   font-size: 13px;
   font-weight: 600;
   color: var(--accent-orange);
+  transition: transform 0.3s ease;
+}
+
+.streak-number-small.animate {
+  animation: firePulse 0.5s ease;
 }
 
 .repeat-button {

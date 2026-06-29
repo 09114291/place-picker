@@ -6,8 +6,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 1000;
   animation: fadeIn 0.2s ease;
 }
@@ -24,9 +23,9 @@
 .modal-content {
   background-color: var(--card-bg);
   border-radius: 16px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 90vh;
+  max-width: 40%; 
+  width: 100%;
+  max-height: 200vh;
   overflow-y: auto;
   border: 1px solid rgba(255, 255, 255, 0.1);
   animation: slideUp 0.3s ease;
@@ -35,11 +34,11 @@
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translateX(100%) translateY(100%);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(0) translateY(0);
     opacity: 1;
   }
 }

@@ -5,10 +5,19 @@ import { placesData } from '../data/places';
 import Modal from '../components/Modal';
 import './Map.css';
 
-function Map() {
+function Map({ incrementStreak }) {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
+
+  const handleCloseModal = () => {
+    setSelectedPlace(null);
+  };
+
+  const handleSelectPlace = () => {
+    incrementStreak();
+    handleCloseModal();
+  };
 
   useEffect(() => {
     if (!mapInstanceRef.current && mapRef.current) {
@@ -21,10 +30,10 @@ function Map() {
       }).addTo(mapInstanceRef.current);
 
       // Add markers for places
-      placesData.slice(0, 15).forEach((place, index) => {
-        // Generate random coordinates around Ivano-Frankivsk center
-        const lat = 48.9229 + (Math.random() - 0.5) * 0.05;
-        const lng = 24.7111 + (Math.random() - 0.5) * 0.05;
+      placesData.forEach((place, index) => {
+        // Use actual coordinates from place data or generate random if not available
+        const lat = place.coordinates ? place.coordinates[0] : 48.9229 + (Math.random() - 0.5) * 0.05;
+        const lng = place.coordinates ? place.coordinates[1] : 24.7111 + (Math.random() - 0.5) * 0.05;
 
         const customIcon = L.divIcon({
           className: 'custom-marker',
@@ -65,10 +74,6 @@ function Map() {
     };
   }, []);
 
-  const handleCloseModal = () => {
-    setSelectedPlace(null);
-  };
-
   return (
     <div className="page">
       <div className="page-header">
@@ -95,6 +100,7 @@ function Map() {
           <div className="place-details-modal">
             <img src={selectedPlace.imgUrl} alt={selectedPlace.name} className="modal-place-image" />
             <div className="modal-place-info">
+              <p className="modal-place-description">{selectedPlace.description}</p>
               <p className="modal-place-cuisine">{selectedPlace.cuisine} кухня</p>
               <p className="modal-place-address">{selectedPlace.address}</p>
               <div className="modal-place-meta">
@@ -102,7 +108,20 @@ function Map() {
                 <span className="modal-place-price">{selectedPlace.priceRange}</span>
                 <span className="modal-place-distance">{selectedPlace.distance}</span>
               </div>
-              <button className="modal-place-button">Обрати це місце</button>
+              {selectedPlace.menu && (
+                <div className="modal-place-menu">
+                  <h4 className="menu-title">Меню:</h4>
+                  <ul className="menu-list">
+                    {selectedPlace.menu.map((item, index) => (
+                      <li key={index} className="menu-item">
+                        <span className="menu-item-name">{item.name}</span>
+                        <span className="menu-item-price">{item.price} грн</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <button className="modal-place-button" onClick={handleSelectPlace}>Обрати це місце</button>
             </div>
           </div>
         )}
