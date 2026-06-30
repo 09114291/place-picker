@@ -12,8 +12,7 @@ function App() {
   const [streak, setStreak] = useState(0);
   const [activeDates, setActiveDates] = useState([]);
   const [selectionStats, setSelectionStats] = useState({});
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Calculate consecutive streak from dates
   const calculateStreak = (dates) => {
@@ -107,15 +106,18 @@ function App() {
     return true;
   };
 
-  const handleNavigation = () => {
-    setShowContent(true);
-  };
   
   return (
     <BrowserRouter>
       <div className="app-container">
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} onNavigate={handleNavigation} />
-        <main className={`main-content ${!showContent ? 'hidden' : ''}`}>
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <div className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`} onClick={() => setSidebarOpen(false)}></div>
+        <main className={`main-content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+          <button className="mobile-menu-btn" onClick={() => setSidebarOpen(true)}>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </button>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/places" element={<Places incrementStreak={incrementStreak} selectionStats={selectionStats} />} />

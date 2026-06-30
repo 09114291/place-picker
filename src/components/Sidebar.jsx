@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
 
-function Sidebar({ isOpen, onClose, onNavigate }) {
+function Sidebar({ isOpen, onClose }) {
   const handleLinkClick = () => {
     if (onClose) {
       onClose();
-    }
-    if (onNavigate) {
-      onNavigate();
     }
   };
 
