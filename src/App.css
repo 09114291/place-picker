@@ -105,6 +105,22 @@
     margin-left: 250px;
     display: block;
   }
+
+  .main-content.sidebar-closed {
+    margin-left: 0;
+  }
+
+  .back-menu-btn {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .sidebar-overlay {
+    display: none !important;
+  }
 }
 
 .page {

@@ -12,7 +12,23 @@ function App() {
   const [streak, setStreak] = useState(0);
   const [activeDates, setActiveDates] = useState([]);
   const [selectionStats, setSelectionStats] = useState({});
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth <= 768) {
+        setSidebarOpen(true);
+      } else {
+        setSidebarOpen(false);
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Calculate consecutive streak from dates
   const calculateStreak = (dates) => {
