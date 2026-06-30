@@ -1,10 +1,19 @@
 import './PlaceCard.css';
 
-function PlaceCard({ place, onDetailsClick }) {
+function PlaceCard({ place, onDetailsClick, isFavorite, onFavoriteToggle }) {
   return (
     <div className="place-card">
       <div className="place-image-container">
         <img src={place.imgUrl} alt={place.name} className="place-image" />
+        <button 
+          className={`favorite-button ${isFavorite ? 'active' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onFavoriteToggle && onFavoriteToggle(place.id);
+          }}
+        >
+          {isFavorite ? '❤️' : '🤍'}
+        </button>
         {place.isOpen ? (
           <div className="place-status open">Відкрито</div>
         ) : (

@@ -53,6 +53,38 @@
   color: white;
 }
 
+.favorite-button {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+  background-color: white;
+}
+
+.favorite-button.active {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.favorite-button:active {
+  transform: scale(0.95);
+}
+
 .place-content {
   padding: 20px;
   display: flex;
@@ -141,4 +173,63 @@
 
 .place-details-button:active {
   transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .place-card {
+    border-radius: 12px;
+  }
+  
+  .place-image-container {
+    height: 180px;
+  }
+  
+  .place-name {
+    font-size: 16px;
+  }
+  
+  .place-cuisine {
+    font-size: 13px;
+  }
+  
+  .place-details {
+    font-size: 12px;
+  }
+  
+  .place-details-button {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+  
+  .favorite-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .place-image-container {
+    height: 160px;
+  }
+  
+  .place-name {
+    font-size: 15px;
+  }
+  
+  .place-content {
+    padding: 16px;
+  }
+  
+  .place-details-button {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+  
+  .favorite-button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
 }

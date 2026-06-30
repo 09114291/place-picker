@@ -11,6 +11,9 @@ import './App.css';
 function App() {
   const [streak, setStreak] = useState(0);
   const [activeDates, setActiveDates] = useState([]);
+  const [selectionStats, setSelectionStats] = useState({});
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [showContent, setShowContent] = useState(false);
   
   // Calculate consecutive streak from dates
   const calculateStreak = (dates) => {
@@ -62,9 +65,15 @@ function App() {
       setStreak(calculateStreak(sampleDates));
       localStorage.setItem('activeDates', JSON.stringify(sampleDates));
     }
+
+    // Load selection statistics
+    const storedStats = localStorage.getItem('selectionStats');
+    if (storedStats) {
+      setSelectionStats(JSON.parse(storedStats));
+    }
   }, []);
   
-  const incrementStreak = () => {
+  const incrementStreak = (placeId = null) => {
     // Read current state from localStorage
     const storedDates = localStorage.getItem('activeDates');
     const currentActiveDates = storedDates ? JSON.parse(storedDates) : [];
@@ -82,19 +91,36 @@ function App() {
     localStorage.setItem('activeDates', JSON.stringify(newActiveDates));
     setActiveDates(newActiveDates);
     setStreak(calculateStreak(newActiveDates));
+
+    // Track selection statistics if placeId is provided
+    if (placeId) {
+      setSelectionStats(prev => {
+        const newStats = {
+          ...prev,
+          [placeId]: (prev[placeId] || 0) + 1
+        };
+        localStorage.setItem('selectionStats', JSON.stringify(newStats));
+        return newStats;
+      });
+    }
+
     return true;
+  };
+
+  const handleNavigation = () => {
+    setShowContent(true);
   };
   
   return (
     <BrowserRouter>
       <div className="app-container">
-        <Sidebar />
-        <main className="main-content">
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} onNavigate={handleNavigation} />
+        <main className={`main-content ${!showContent ? 'hidden' : ''}`}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/places" element={<Places incrementStreak={incrementStreak} />} />
-            <Route path="/map" element={<Map incrementStreak={incrementStreak} />} />
-            <Route path="/streak" element={<Streak streak={streak} setStreak={setStreak} activeDates={activeDates} />} />
+            <Route path="/places" element={<Places incrementStreak={incrementStreak} selectionStats={selectionStats} />} />
+            <Route path="/map" element={<Map incrementStreak={incrementStreak} selectionStats={selectionStats} />} />
+            <Route path="/streak" element={<Streak streak={streak} setStreak={setStreak} activeDates={activeDates} selectionStats={selectionStats} />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>

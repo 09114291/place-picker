@@ -5,7 +5,7 @@ import StreakCalendar from '../components/StreakCalendar';
 import RewardsBox from '../components/RewardsBox';
 import './Streak.css';
 
-function Streak({ streak, setStreak, activeDates }) {
+function Streak({ streak, setStreak, activeDates, selectionStats }) {
   const rewardsRef = useRef(null);
   
   const incrementStreak = () => {
@@ -26,7 +26,7 @@ function Streak({ streak, setStreak, activeDates }) {
       <StreakBanner streak={streak} onViewRewards={handleViewRewards} />
       <div className="streak-content">
         <div className="streak-left">
-          <HistoryList incrementStreak={incrementStreak} currentStreak={streak} />
+          <HistoryList incrementStreak={incrementStreak} currentStreak={streak} selectionStats={selectionStats} />
         </div>
         <div className="streak-right">
           <StreakCalendar streak={streak} activeDates={activeDates} />

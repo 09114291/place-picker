@@ -5,7 +5,7 @@ import HistoryCard from './HistoryCard';
 import Modal from './Modal';
 import './HistoryList.css';
 
-function HistoryList({ incrementStreak, currentStreak }) {
+function HistoryList({ incrementStreak, currentStreak, selectionStats }) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
 
@@ -22,7 +22,7 @@ function HistoryList({ incrementStreak, currentStreak }) {
   };
 
   const handleRepeatSelection = () => {
-    const wasIncremented = incrementStreak();
+    const wasIncremented = incrementStreak(selectedPlace?.id);
     if (wasIncremented) {
       // Keep selected item to trigger animation in cards
       // Clear it after animation
@@ -99,6 +99,12 @@ function HistoryList({ incrementStreak, currentStreak }) {
                 <span className="streak-number-small">{currentStreak} днів поспіль</span>
               </div>
               <button className="modal-place-button" onClick={handleRepeatSelection}>Обрати це місце</button>
+              
+              {selectionStats[selectedPlace?.id] > 0 && (
+                <div className="selection-stats">
+                  <p className="stats-text">Це місце обирали {selectionStats[selectedPlace.id]} разів</p>
+                </div>
+              )}
             </div>
           </div>
         )}

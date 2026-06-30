@@ -123,3 +123,103 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
 }
+
+.selection-stats {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.stats-text {
+  font-size: 14px;
+  color: #81c784;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .history-list {
+    margin-top: 16px;
+  }
+
+  .history-header {
+    margin-bottom: 12px;
+  }
+
+  .history-title {
+    font-size: 16px;
+  }
+
+  .filter-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .filter-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .repeat-selection-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .modal-history-image {
+    height: 160px;
+  }
+
+  .modal-history-date {
+    font-size: 12px;
+  }
+
+  .modal-history-streak {
+    font-size: 12px;
+  }
+
+  .modal-history-button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .selection-stats {
+    padding: 10px;
+  }
+
+  .stats-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .history-title {
+    font-size: 15px;
+  }
+
+  .filter-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .filter-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .repeat-selection-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .modal-history-image {
+    height: 140px;
+  }
+
+  .modal-history-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}

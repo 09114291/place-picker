@@ -184,3 +184,90 @@
   font-weight: 600;
   min-width: 35px;
 }
+
+@media (max-width: 480px) {
+  .rewards-box {
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .rewards-box-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .reward-card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .reward-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .reward-card-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .reward-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .reward-card-title {
+    font-size: 13px;
+  }
+
+  .reward-card-description {
+    font-size: 11px;
+  }
+
+  .reward-progress {
+    margin-top: 6px;
+  }
+
+  .reward-progress-bar {
+    height: 4px;
+  }
+
+  .reward-progress-text {
+    font-size: 11px;
+    min-width: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .rewards-box {
+    padding: 12px;
+  }
+
+  .rewards-box-title {
+    font-size: 15px;
+  }
+
+  .reward-card {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .reward-card-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .reward-card-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .reward-card-title {
+    font-size: 12px;
+  }
+
+  .reward-card-description {
+    font-size: 10px;
+  }
+}

@@ -5,7 +5,7 @@ import { placesData } from '../data/places';
 import Modal from '../components/Modal';
 import './Map.css';
 
-function Map({ incrementStreak }) {
+function Map({ incrementStreak, selectionStats }) {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -15,7 +15,7 @@ function Map({ incrementStreak }) {
   };
 
   const handleSelectPlace = () => {
-    incrementStreak();
+    incrementStreak(selectedPlace.id);
     handleCloseModal();
   };
 
@@ -122,6 +122,12 @@ function Map({ incrementStreak }) {
                 </div>
               )}
               <button className="modal-place-button" onClick={handleSelectPlace}>Обрати це місце</button>
+              
+              {selectionStats[selectedPlace?.id] > 0 && (
+                <div className="selection-stats">
+                  <p className="stats-text">Це місце обирали {selectionStats[selectedPlace.id]} разів</p>
+                </div>
+              )}
             </div>
           </div>
         )}

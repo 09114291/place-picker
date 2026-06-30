@@ -15,9 +15,85 @@
   gap: 24px;
 }
 
+.recommendations-section {
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(255, 133, 51, 0.05) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.recommendations-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0 0 20px 0;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.recommendation-card {
+  position: relative;
+}
+
+.recommendation-reason {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.reason-badge {
+  background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8533 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.4);
+}
+
+.search-panel {
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.search-input:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-orange);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-input::placeholder {
+  color: var(--text-light);
+  opacity: 0.5;
+}
+
 .filters-panel {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
   padding: 20px;
   background-color: var(--card-bg);
@@ -201,4 +277,293 @@
 .modal-place-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+}
+
+.selection-stats {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.stats-text {
+  font-size: 14px;
+  color: #81c784;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.no-results-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0 0 8px 0;
+}
+
+.no-results-subtext {
+  font-size: 16px;
+  color: var(--text-light);
+  opacity: 0.6;
+  margin: 0;
+}
+
+.modal-reviews-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.reviews-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.add-review-button {
+  background-color: rgba(255, 107, 0, 0.2);
+  color: var(--accent-orange);
+  border: 1px solid var(--accent-orange);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-review-button:hover {
+  background-color: var(--accent-orange);
+  color: white;
+}
+
+.review-form {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.rating-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rating-label {
+  font-size: 14px;
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+.star-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.star-button.active {
+  opacity: 1;
+}
+
+.review-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.review-input:focus {
+  outline: none;
+  border-color: var(--accent-orange);
+}
+
+.review-input::placeholder {
+  color: var(--text-light);
+  opacity: 0.5;
+}
+
+.submit-review-button {
+  background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8533 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-review-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-item {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.review-rating {
+  font-size: 16px;
+}
+
+.review-date {
+  font-size: 12px;
+  color: var(--text-light);
+  opacity: 0.5;
+}
+
+.delete-review-button {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  opacity: 0.5;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.2s ease;
+}
+
+.delete-review-button:hover {
+  opacity: 1;
+  color: #ff4444;
+}
+
+.review-comment {
+  font-size: 14px;
+  color: var(--text-light);
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.no-reviews {
+  text-align: center;
+  color: var(--text-light);
+  opacity: 0.5;
+  font-size: 14px;
+  padding: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .filters-panel {
+    grid-template-columns: 1fr;
+  }
+  
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .filter-select {
+    font-size: 14px;
+  }
+  
+  .search-input {
+    font-size: 14px;
+  }
+  
+  .modal-place-image {
+    height: 150px;
+  }
+  
+  .place-card {
+    border-radius: 12px;
+  }
+  
+  .place-image-container {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .places-content {
+    gap: 16px;
+  }
+  
+  .search-panel,
+  .filters-panel {
+    padding: 16px;
+  }
+  
+  .recommendations-section {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .filters-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .places-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .recommendations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
