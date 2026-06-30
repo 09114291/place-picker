@@ -1,24 +1,18 @@
 import { Link } from 'react-router-dom';
 
-function Sidebar({ isOpen, onClose }) {
-  const handleLinkClick = () => {
-    if (onClose) {
-      onClose();
-    }
-  };
-
+function Sidebar() {
   return (
-    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+    <aside className="sidebar">
       <div className="sidebar-logo">
         <h2>Place Picker</h2>
       </div>
       
       <nav className="sidebar-nav">
-        <Link to="/" className="nav-link" onClick={handleLinkClick}>Home</Link>
-        <Link to="/places" className="nav-link" onClick={handleLinkClick}>Places</Link>
-        <Link to="/map" className="nav-link" onClick={handleLinkClick}>Map</Link>
-        <Link to="/streak" className="nav-link" onClick={handleLinkClick}>Streak</Link>
-        <Link to="/settings" className="nav-link" onClick={handleLinkClick}>Settings</Link>
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/places" className="nav-link">Places</Link>
+        <Link to="/map" className="nav-link">Map</Link>
+        <Link to="/streak" className="nav-link">Streak</Link>
+        <Link to="/settings" className="nav-link">Settings</Link>
       </nav>
 
       <div className="sidebar-profile">
