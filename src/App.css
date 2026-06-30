@@ -139,7 +139,7 @@
   }
 
   .sidebar {
-    width: 280px;
+    width: 100%;
     transform: translateX(-100%);
   }
 
@@ -158,10 +158,6 @@
 }
 
 @media (max-width: 480px) {
-  .sidebar {
-    width: 100%;
-  }
-
   .main-content {
     padding: 12px;
   }
@@ -174,5 +170,19 @@
   .mobile-menu-btn svg {
     width: 20px;
     height: 20px;
+  }
+
+  .sidebar {
+    padding: 20px;
+  }
+
+  .sidebar-logo h2 {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .nav-link {
+    padding: 16px;
+    font-size: 16px;
   }
 }
