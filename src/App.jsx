@@ -14,21 +14,24 @@ function App() {
   const [selectionStats, setSelectionStats] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth <= 768) {
-        setSidebarOpen(true);
-      } else {
-        setSidebarOpen(false);
-      }
     };
     
     checkMobile();
+    
+    // Only open sidebar on initial load for mobile
+    if (isInitialLoad && window.innerWidth <= 768) {
+      setSidebarOpen(true);
+      setIsInitialLoad(false);
+    }
+    
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [isInitialLoad]);
   
   // Calculate consecutive streak from dates
   const calculateStreak = (dates) => {
